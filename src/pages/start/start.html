@@ -1,0 +1,62 @@
+<!--
+  Generated template for the Start page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>start work with GitHub</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  in Promise
+  <ion-searchbar [(ngModel)] = "keyword"
+    (cancel)="userPressedCacnel()"
+    (keyup)="keyHasBeenPressed($event)" >
+  </ion-searchbar>
+  <ion-list>
+    
+  <ion-item *ngFor="let result of results">
+     
+      <h2>{{result.name}}</h2>
+      
+       
+  </ion-item >
+
+</ion-list>
+
+
+ <ion-list> 
+  <ion-item *ngFor="let iTunesItem of iTunesList">
+     
+      <ion-thumbnail item-left   (click)="goToArtist(iTunesItem)">
+          <img [src]="iTunesItem.artworkUrl100">
+      </ion-thumbnail>
+      <h2>{{iTunesItem.artistName}}</h2>
+      <h2>PRice:{{iTunesItem.currency}}{{iTunesItem.collectionPrice}}</h2>
+      <h2 [innerText]="iTunesItem.trackName"></h2>
+      <h2 click="doSlides(iTunesItem)">{{iTunesItem.artistId}}</h2>
+      {{iTunesItem.kind}}
+      <ion-icon item-right
+        [name] = "iTunesItem.kind === 'song' ? 'musical-notes' : 'film'">
+      </ion-icon>
+       <ion-icon item-right [name]="'bicycle'" 
+      (click)="doSlides(iTunesItem)"
+      [hidden]= "iTunesItem.kind !== 'song'">{{iTunesItem.artistId}} </ion-icon>
+
+      <ion-icon item-right [name]="'person'" 
+      (click)="goToArtist(iTunesItem)"
+      [hidden]= "iTunesItem.kind !== 'song'"> </ion-icon>
+       
+  </ion-item >
+
+</ion-list>
+
+
+</ion-content>
+
